@@ -18,6 +18,7 @@ common_msm_dirs := libcopybit liblights libopencorehw librpc libstagefrighthw
 msm7k_dirs := $(common_msm_dirs) boot libgralloc libaudio
 qsd8k_dirs := $(common_msm_dirs) libgralloc-qsd8k libaudio-qsd8k dspcrashd
 msm7x30_dirs := liblights libgralloc-qsd8k librpc libaudio-qdsp5v2
+msm8660_dirs := $(common_msm_dirs) ibgralloc-qsd8k dspcrashd
 
 ifeq ($(TARGET_BOARD_PLATFORM),msm7k)
   include $(call all-named-subdir-makefiles,$(msm7k_dirs))
@@ -25,8 +26,12 @@ else
   ifeq ($(TARGET_BOARD_PLATFORM),qsd8k)
     include $(call all-named-subdir-makefiles,$(qsd8k_dirs))
   else
-    ifeq ($(TARGET_BOARD_PLATFORM),msm7x30)
+    ifeq ($(TARGET_BOARD_PLATFORM),msm8660)
       include $(call all-named-subdir-makefiles,$(msm7x30_dirs))
+    else
+        ifeq ($(TARGET_BOARD_PLATFORM),msm8660)
+            include $(call all-named-subdir-makefiles,$(msm8660_dirs))
+        endif
     endif
   endif
 endif
