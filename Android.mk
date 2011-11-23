@@ -26,7 +26,7 @@ else
   ifeq ($(TARGET_BOARD_PLATFORM),qsd8k)
     include $(call all-named-subdir-makefiles,$(qsd8k_dirs))
   else
-    ifeq ($(TARGET_BOARD_PLATFORM),msm8660)
+    ifeq ($(TARGET_BOARD_PLATFORM),msm7x30)
       include $(call all-named-subdir-makefiles,$(msm7x30_dirs))
     else
         ifeq ($(TARGET_BOARD_PLATFORM),msm8660)
