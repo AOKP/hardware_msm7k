@@ -19,11 +19,14 @@ ifeq ($(BOARD_USES_QCOM_HARDWARE),true)
 common_msm_dirs := liblights librpc dspcrashd
 msm7k_dirs := $(common_msm_dirs) boot
 qsd8k_dirs := $(common_msm_dirs) libstagefrighthw
+msm7x30_dirs := $(common_msm_dirs) libcamera-msm7x30
 
 ifeq ($(TARGET_BOARD_PLATFORM),msm7x27)
   include $(call all-named-subdir-makefiles,$(msm7k_dirs))
 else ifeq ($(TARGET_BOARD_PLATFORM),qsd8k)
   include $(call all-named-subdir-makefiles,$(qsd8k_dirs))
+else ifeq ($(TARGET_BOARD_PLATFORM),msm7x30)
+  include $(call all-named-subdir-makefiles,$(msm7x30_dirs))
 else
   include $(call all-named-subdir-makefiles,$(common_msm_dirs))
 endif
